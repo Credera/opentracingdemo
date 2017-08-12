@@ -19,8 +19,8 @@ The demo site allows the user to navigate the final image created by Reddit's [r
 
 #### Prepare Activity Database
 ```bash
-$ go get github.com/srudolph-credera/opentracingdemo
-$ cd $(go env GOPATH)/src/github.com/srudolph-credera/opentracingdemo/go-create-db
+$ go get github.com/Credera/opentracingdemo
+$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo/go-create-db
 $ go run main.go
 ```
 
@@ -33,21 +33,21 @@ $ java -jar zipkin*.jar
 #### Start Spring Boot
 From another terminal:
 ```bash
-$ cd $(go env GOPATH)/src/github.com/srudolph-credera/opentracingdemo/spring-web
+$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo/spring-web
 $ ./gradlew bootRun
 ```
 
 #### Start Heat Map Service
 From another terminal:
 ```bash
-$ cd $(go env GOPATH)/src/github.com/srudolph-credera/opentracingdemo/go-heatmap
+$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo/go-heatmap
 $ go run main.go
 ```
 
 #### Start Cross Section Service
 From another terminal:
 ```bash
-$ cd $(go env GOPATH)/src/github.com/srudolph-credera/opentracingdemo/java-cross-section
+$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo/java-cross-section
 $ ./gradlew run
 ```
 
@@ -61,13 +61,13 @@ $ ./gradlew run
 #### Setup Project
 
 ```bash
-$ go get github.com/srudolph-credera/opentracingdemo
+$ go get github.com/Credera/opentracingdemo
 ```
 
 #### Start all
 
 ```bash
-$ cd $(go env GOPATH)/src/github.com/srudolph-credera/opentracingdemo
+$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo
 $ tmuxinator
 ```
 
