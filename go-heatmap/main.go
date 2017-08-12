@@ -17,7 +17,7 @@ import (
 )
 
 var zipkinEndpoint = "http://localhost:9411/api/v1/spans"
-var serviceAddress = "localhost:8081"
+var serviceAddress = ":8081"
 var serviceName = "Go Heat Map"
 var db *sql.DB
 var queryActivity *sql.Stmt
@@ -107,7 +107,7 @@ func main() {
 
 	// Initialize database
 	sql.Register("instrumented-sqlite3", instrumentedsql.WrapDriver(&sqlite3.SQLiteDriver{}, instrumentedsql.WithTracer(iot.NewTracer())))
-	db, err = sql.Open("instrumented-sqlite3", "../activity.db")
+	db, err = sql.Open("instrumented-sqlite3", "activity.db")
 	if err != nil {
 		fmt.Printf("Could not open database: %v\n", err)
 		os.Exit(-1)

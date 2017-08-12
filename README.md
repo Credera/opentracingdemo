@@ -19,8 +19,8 @@ The demo site allows the user to navigate the final image created by Reddit's [r
 
 #### Prepare Activity Database
 ```bash
-$ go get github.com/Credera/opentracingdemo
-$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo/go-create-db
+$ go get -d github.com/Credera/opentracingdemo
+$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo/go-heatmap/go-create-db
 $ go run main.go
 ```
 
