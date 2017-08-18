@@ -26,15 +26,11 @@ class CrossSectionClient {
 
     private CrossSectionBlockingStub blockingStub;
 
-    @Value("${grpc.host:localhost}")
-    private String grpcHost;
-
-    @Value("${grpc.port:8082}")
-    private int grpcPort;
-
     @PostConstruct
     public void init() {
-        ManagedChannelBuilder channelBuilder = ManagedChannelBuilder.forAddress(grpcHost, grpcPort).usePlaintext(true);
+        String crossSectionAddress = System.getProperty("cross-section.address", "localhost:8082");
+        LOG.info("Cross Section service address: {}", crossSectionAddress);
+        ManagedChannelBuilder channelBuilder = ManagedChannelBuilder.forTarget(crossSectionAddress).usePlaintext(true);
         ClientTracingInterceptor interceptor = new ClientTracingInterceptor(tracer);
         this.blockingStub = CrossSectionGrpc.newBlockingStub(
                 interceptor.intercept(channelBuilder.build()));
@@ -48,7 +44,7 @@ class CrossSectionClient {
         try {
             levels = blockingStub.getCrossSection(range);
         } catch (StatusRuntimeException e) {
-            LOG.warn("RPC failed: %s", e.getStatus());
+            LOG.warn("RPC failed: {}", e.getStatus());
             return null;
         }
 

@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"database/sql"
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
@@ -16,7 +17,6 @@ import (
 	zipkin "github.com/openzipkin/zipkin-go-opentracing"
 )
 
-var zipkinEndpoint = "http://localhost:9411/api/v1/spans"
 var serviceAddress = ":8081"
 var serviceName = "Go Heat Map"
 var db *sql.DB
@@ -88,6 +88,10 @@ func handleHeatMapRequest(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	var zipkinEndpoint string
+	flag.StringVar(&zipkinEndpoint, "z", "http://localhost:9411/api/v1/spans", "The Zipkin server endpoint e.g.: 'http://<host>:<port>/api/v1/spans'")
+	flag.Parse()
+
 	// Initialize Zipkin
 	collector, err := zipkin.NewHTTPCollector(zipkinEndpoint)
 	if err != nil {

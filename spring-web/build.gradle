@@ -45,6 +45,7 @@ repositories {
 
 bootRun {
     addResources = true
+    systemProperties = System.properties
 }
 
 sourceCompatibility = 1.8

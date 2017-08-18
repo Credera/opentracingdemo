@@ -25,15 +25,15 @@ class CrossSectionServer {
     private final int port;
     private final Server server;
 
-    CrossSectionServer(int port, Tracer tracer, Call.Factory client) throws IOException {
-        this(ServerBuilder.forPort(port), port, tracer, client);
+    CrossSectionServer(int port, String heatmapEndpoint, Tracer tracer, Call.Factory client) throws IOException {
+        this(ServerBuilder.forPort(port), port, heatmapEndpoint, tracer, client);
     }
 
-    private CrossSectionServer(ServerBuilder<?> serverBuilder, int port, Tracer tracer, Call.Factory client) {
+    private CrossSectionServer(ServerBuilder<?> serverBuilder, int port, String heatmapEndpoint, Tracer tracer, Call.Factory client) {
         this.port = port;
         ServerTracingInterceptor interceptor = new ServerTracingInterceptor(tracer);
         this.server = serverBuilder
-                .addService(interceptor.intercept(new CrossSectionService(client)))
+                .addService(interceptor.intercept(new CrossSectionService(client, heatmapEndpoint)))
                 .build();
     }
 
@@ -58,9 +58,11 @@ class CrossSectionServer {
 
     private static class CrossSectionService extends CrossSectionGrpc.CrossSectionImplBase {
         private final Call.Factory httpClient;
+        private final String heatmapEndpoint;
 
-        CrossSectionService(Call.Factory client) {
+        CrossSectionService(Call.Factory client, String heatmapEndpoint) {
             this.httpClient = client;
+            this.heatmapEndpoint = heatmapEndpoint;
         }
 
         private static Double safeDoubleFromBody(ResponseBody body) {
@@ -88,7 +90,7 @@ class CrossSectionServer {
                 int y = startY + (int)(i*stepY);
                 OkHttpResponseFuture callback = new OkHttpResponseFuture();
                 Request activityRequest = new Request.Builder()
-                        .url("http://localhost:8081/heatmap?x=" + x + "&y=" + y)
+                        .url(this.heatmapEndpoint + "?x=" + x + "&y=" + y)
                         .tag(new TagWrapper(span.context()))
                         .build();
                 this.httpClient.newCall(activityRequest).enqueue(callback);

@@ -70,6 +70,17 @@ $ go get github.com/Credera/opentracingdemo
 $ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo
 $ tmuxinator
 ```
+### Option 3 - Docker
+
+#### Additional Prerequisites
+* [Docker (with Compose)](https://www.docker.com)
+
+#### Start all
+
+```bash
+$ cd $(go env GOPATH)/src/github.com/Credera/opentracingdemo
+$ docker-compose up
+```
 
 ### Connect to Demo Site and Zipkin UI
 * [Demo Page](http://localhost:8080)

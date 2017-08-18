@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import java.util.Collections;
 
 @RestController
@@ -22,6 +23,14 @@ public class HeatmapController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    private String heatmapEndpoint;
+
+    @PostConstruct
+    public void init() {
+        heatmapEndpoint = System.getProperty("heatmap.endpoint", "http://localhost:8081/heatmap");
+        LOG.info("Heatmap service endpoint: {}", heatmapEndpoint);
+    }
 
     @RequestMapping("/heatmap")
     public double heatmap(@RequestParam(value = "x") Integer x, @RequestParam(value = "y") Integer y) {
@@ -36,7 +45,7 @@ public class HeatmapController {
         }
 
         // Forward request to Go Heat Map service
-        String requestUrl = String.format("http://localhost:8081/heatmap?x=%d&y=%d", x, y);
+        String requestUrl = String.format("%s?x=%d&y=%d", heatmapEndpoint, x, y);
         ResponseEntity<String> response = restTemplate.getForEntity(requestUrl, String.class);
 
         return Double.parseDouble(response.getBody());
