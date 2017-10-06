@@ -4,6 +4,8 @@ This project is composed of multiple simple services setup to use Zipkin via the
 
 The demo site allows the user to navigate the final image created by Reddit's [r/place experiment](https://www.reddit.com/r/place/). The activity heat map will be filled in as the user moves a mouse over the image. The user may also move two markers to plot a cross section of the heatmap data. These activities will result in a large number of traces that can be inspected.
 
+Note: Awaiting updates from [gRPC-OpenTracing](https://github.com/grpc-ecosystem/grpc-opentracing) before the cross-section service can be updated to match the other components. Until this is resolved, no cross-sections will be shown and that service will not appear in Zipkin.
+
 ## Usage
 
 ### Prerequisites
