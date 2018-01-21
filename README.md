@@ -87,11 +87,6 @@ $ docker-compose up
 * [Zipkin UI](http://localhost:9411)
 
 ## Third party libraries
-Note: the various libraries and components of this project currently support:
-* OpenTracing API version 0.31.0
-* gRPC version 1.8.0
-* Protobuf version 3.5.1
-
 * [Bootstrap](http://getbootstrap.com)
 * [LeafletJS](http://leafletjs.com)
 * [D3js](http://d3js.org)
@@ -106,3 +101,8 @@ Note: the various libraries and components of this project currently support:
 * [gRPC](http://www.grpc.io)
 * [Instrumented SQL](http://github.com/ExpansiveWorlds/instrumentedsql)
 * [SQLite3 Go Driver](github.com/mattn/go-sqlite3)
+
+Note: the various libraries and components of this project currently support:
+* OpenTracing API version 0.31.0
+* gRPC version 1.8.0
+* Protobuf version 3.5.1
