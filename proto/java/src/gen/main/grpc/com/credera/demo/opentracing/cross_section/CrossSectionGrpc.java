@@ -1,24 +1,24 @@
 package com.credera.demo.opentracing.cross_section;
 
-import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.blockingUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
-import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
+import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.2.0)",
+    value = "by gRPC proto compiler (version 1.8.0)",
     comments = "Source: cross_section.proto")
 public final class CrossSectionGrpc {
 
@@ -28,14 +28,37 @@ public final class CrossSectionGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getGetCrossSectionMethod()} instead. 
   public static final io.grpc.MethodDescriptor<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range,
-      com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> METHOD_GET_CROSS_SECTION =
-      io.grpc.MethodDescriptor.create(
-          io.grpc.MethodDescriptor.MethodType.UNARY,
-          generateFullMethodName(
-              "crosssection.CrossSection", "GetCrossSection"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range.getDefaultInstance()),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels.getDefaultInstance()));
+      com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> METHOD_GET_CROSS_SECTION = getGetCrossSectionMethod();
+
+  private static volatile io.grpc.MethodDescriptor<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range,
+      com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> getGetCrossSectionMethod;
+
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static io.grpc.MethodDescriptor<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range,
+      com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> getGetCrossSectionMethod() {
+    io.grpc.MethodDescriptor<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range, com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> getGetCrossSectionMethod;
+    if ((getGetCrossSectionMethod = CrossSectionGrpc.getGetCrossSectionMethod) == null) {
+      synchronized (CrossSectionGrpc.class) {
+        if ((getGetCrossSectionMethod = CrossSectionGrpc.getGetCrossSectionMethod) == null) {
+          CrossSectionGrpc.getGetCrossSectionMethod = getGetCrossSectionMethod = 
+              io.grpc.MethodDescriptor.<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range, com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "crosssection.CrossSection", "GetCrossSection"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels.getDefaultInstance()))
+                  .setSchemaDescriptor(new CrossSectionMethodDescriptorSupplier("GetCrossSection"))
+                  .build();
+          }
+        }
+     }
+     return getGetCrossSectionMethod;
+  }
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -53,7 +76,7 @@ public final class CrossSectionGrpc {
   }
 
   /**
-   * Creates a new ListenableFuture-style stub that supports unary and streaming output calls on the service
+   * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
   public static CrossSectionFutureStub newFutureStub(
       io.grpc.Channel channel) {
@@ -71,13 +94,13 @@ public final class CrossSectionGrpc {
      */
     public void getCrossSection(com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range request,
         io.grpc.stub.StreamObserver<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_GET_CROSS_SECTION, responseObserver);
+      asyncUnimplementedUnaryCall(getGetCrossSectionMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            METHOD_GET_CROSS_SECTION,
+            getGetCrossSectionMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range,
@@ -113,7 +136,7 @@ public final class CrossSectionGrpc {
     public void getCrossSection(com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range request,
         io.grpc.stub.StreamObserver<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_GET_CROSS_SECTION, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetCrossSectionMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -142,7 +165,7 @@ public final class CrossSectionGrpc {
      */
     public com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels getCrossSection(com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_GET_CROSS_SECTION, getCallOptions(), request);
+          getChannel(), getGetCrossSectionMethod(), getCallOptions(), request);
     }
   }
 
@@ -172,7 +195,7 @@ public final class CrossSectionGrpc {
     public com.google.common.util.concurrent.ListenableFuture<com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels> getCrossSection(
         com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_GET_CROSS_SECTION, getCallOptions()), request);
+          getChannel().newCall(getGetCrossSectionMethod(), getCallOptions()), request);
     }
   }
 
@@ -215,10 +238,38 @@ public final class CrossSectionGrpc {
     }
   }
 
-  private static final class CrossSectionDescriptorSupplier implements io.grpc.protobuf.ProtoFileDescriptorSupplier {
+  private static abstract class CrossSectionBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+    CrossSectionBaseDescriptorSupplier() {}
+
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
       return com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.getDescriptor();
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
+      return getFileDescriptor().findServiceByName("CrossSection");
+    }
+  }
+
+  private static final class CrossSectionFileDescriptorSupplier
+      extends CrossSectionBaseDescriptorSupplier {
+    CrossSectionFileDescriptorSupplier() {}
+  }
+
+  private static final class CrossSectionMethodDescriptorSupplier
+      extends CrossSectionBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
+    private final String methodName;
+
+    CrossSectionMethodDescriptorSupplier(String methodName) {
+      this.methodName = methodName;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
+      return getServiceDescriptor().findMethodByName(methodName);
     }
   }
 
@@ -231,8 +282,8 @@ public final class CrossSectionGrpc {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new CrossSectionDescriptorSupplier())
-              .addMethod(METHOD_GET_CROSS_SECTION)
+              .setSchemaDescriptor(new CrossSectionFileDescriptorSupplier())
+              .addMethod(getGetCrossSectionMethod())
               .build();
         }
       }

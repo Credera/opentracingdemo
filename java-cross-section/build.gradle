@@ -11,17 +11,17 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.3'
     }
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.2.0"
+        artifact = "com.google.protobuf:protoc:3.5.1-1"
     }
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.2.0'
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.8.0'
         }
     }
     generateProtoTasks {
@@ -34,7 +34,7 @@ protobuf {
 
 jar {
     baseName = 'cross-section'
-    version = '0.2.0'
+    version = '0.3.0'
     manifest {
         attributes 'Main-Class' : 'com.credera.demo.opentracing.cross_section.Application'
     }
@@ -60,13 +60,13 @@ sourceSets {
 }
 
 dependencies {
-    compile 'io.grpc:grpc-netty:1.2.0'
-    compile 'io.grpc:grpc-protobuf:1.2.0'
-    compile 'io.grpc:grpc-stub:1.2.0'
-    compile 'io.opentracing.brave:brave-opentracing:0.20.0'
-    compile 'io.opentracing.contrib:grpc-opentracing:0.2.0'
-    compile 'io.opentracing.contrib:opentracing-okhttp3:0.0.5'
-    compile 'io.zipkin.reporter:zipkin-sender-okhttp3:1.0.0'
+    compile 'io.grpc:grpc-netty:1.8.0'
+    compile 'io.grpc:grpc-protobuf:1.8.0'
+    compile 'io.grpc:grpc-stub:1.8.0'
+    compile 'io.opentracing.brave:brave-opentracing:0.25.0'
+    compile 'io.opentracing.contrib:opentracing-grpc:0.0.2'
+    compile 'io.opentracing.contrib:opentracing-okhttp3:0.1.0'
+    compile 'io.zipkin.reporter2:zipkin-sender-okhttp3:2.3.0'
     testCompile 'junit:junit:4.12'
 }
 

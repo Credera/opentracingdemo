@@ -4,8 +4,6 @@ This project is composed of multiple simple services setup to use Zipkin via the
 
 The demo site allows the user to navigate the final image created by Reddit's [r/place experiment](https://www.reddit.com/r/place/). The activity heat map will be filled in as the user moves a mouse over the image. The user may also move two markers to plot a cross section of the heatmap data. These activities will result in a large number of traces that can be inspected.
 
-Note: Awaiting updates from [gRPC-OpenTracing](https://github.com/grpc-ecosystem/grpc-opentracing) before the cross-section service can be updated to match the other components. Until this is resolved, no cross-sections will be shown and that service will not appear in Zipkin.
-
 ## Usage
 
 ### Prerequisites
@@ -89,6 +87,11 @@ $ docker-compose up
 * [Zipkin UI](http://localhost:9411)
 
 ## Third party libraries
+Note: the various libraries and components of this project currently support:
+* OpenTracing API version 0.31.0
+* gRPC version 1.8.0
+* Protobuf version 3.5.1
+
 * [Bootstrap](http://getbootstrap.com)
 * [LeafletJS](http://leafletjs.com)
 * [D3js](http://d3js.org)
@@ -96,7 +99,7 @@ $ docker-compose up
 * [OpenTracing clients](https://github.com/opentracing)
 * [OpenTracing Java Spring Web](https://github.com/opentracing-contrib/java-spring-web)
 * [OpenTracing OkHttp](https://github.com/opentracing-contrib/java-okhttp)
-* [GRPC-OpenTracing](https://github.com/grpc-ecosystem/grpc-opentracing)
+* [OpenTracing gRPC](https://github.com/opentracing-contrib/java-grpc)
 * [Zipkin clients](https://github.com/openzipkin)
 * [Spring](http://spring.io)
 * [OkHttp](https://github.com/square/okhttp)

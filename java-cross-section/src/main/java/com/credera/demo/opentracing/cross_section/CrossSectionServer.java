@@ -9,8 +9,8 @@ import io.opentracing.Tracer;
 import com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels;
 import com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.ActivityLevels.Builder;
 import com.credera.demo.opentracing.cross_section.CrossSectionOuterClass.Range;
-import io.opentracing.contrib.OpenTracingContextKey;
-import io.opentracing.contrib.ServerTracingInterceptor;
+import io.opentracing.contrib.grpc.OpenTracingContextKey;
+import io.opentracing.contrib.grpc.ServerTracingInterceptor;
 import io.opentracing.contrib.okhttp3.TagWrapper;
 import okhttp3.*;
 
@@ -25,7 +25,7 @@ class CrossSectionServer {
     private final int port;
     private final Server server;
 
-    CrossSectionServer(int port, String heatmapEndpoint, Tracer tracer, Call.Factory client) throws IOException {
+    CrossSectionServer(int port, String heatmapEndpoint, Tracer tracer, Call.Factory client) {
         this(ServerBuilder.forPort(port), port, heatmapEndpoint, tracer, client);
     }
 

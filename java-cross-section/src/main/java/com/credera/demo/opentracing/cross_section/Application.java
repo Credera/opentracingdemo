@@ -7,30 +7,27 @@ import io.opentracing.contrib.okhttp3.TracingCallFactory;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.OkHttpClient.Builder;
-import zipkin.reporter.AsyncReporter;
-import zipkin.reporter.okhttp3.OkHttpSender;
-
-import java.util.Arrays;
+import zipkin2.reporter.AsyncReporter;
+import zipkin2.reporter.okhttp3.OkHttpSender;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        String zipkinEndpoint = System.getProperty("zipkin.endpoint", "http://localhost:9411/api/v1/spans");
+        String zipkinEndpoint = System.getProperty("zipkin.endpoint", "http://localhost:9411/api/v2/spans");
         String heatmapEndpoint = System.getProperty("heatmap.endpoint", "http://localhost:8081/heatmap");
         System.out.printf("Zipkin endpoint: %s\nHeatmap endpoint: %s\n", zipkinEndpoint, heatmapEndpoint);
 
         // Initialize Zipkin
 
         // Configure a reporter, which controls how often spans are sent
-        //   (the dependency is io.zipkin.reporter:zipkin-sender-okhttp3)
+        //   (the dependency is io.zipkin.reporter2:zipkin-sender-okhttp3)
         OkHttpSender sender = OkHttpSender.create(zipkinEndpoint);
-        AsyncReporter reporter = AsyncReporter.builder(sender).build();
+        AsyncReporter<zipkin2.Span> spanReporter = AsyncReporter.create(sender);
 
         // Now, create a Brave tracing component with the service name you want to see in Zipkin.
-        //   (the dependency is io.zipkin.brave:brave)
         Tracing braveTracing = Tracing.newBuilder()
                 .localServiceName("Java Cross Section")
-                .reporter(reporter)
+                .spanReporter(spanReporter)
                 .build();
 
         // Finally, wrap this with the OpenTracing API
